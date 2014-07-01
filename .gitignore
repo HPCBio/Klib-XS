@@ -22,5 +22,7 @@ pod2htm*.tmp
 # ignore C files in perl directories
 lib/Klib/*\.c
 
-# ignore build
-Bio-EUtilities*
+# ignore build/dist stuff
+_build
+MYMETA\.*
+blib
