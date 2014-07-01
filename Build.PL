@@ -16,7 +16,7 @@ my %module_build_args = (
         "Chris Fields <cjfields\@bioperl.org>"
     ],
     "dist_name"             => "Klib",
-    "dist_version"          => "0.01",
+    "dist_version_from"     => "lib/Klib.pm",
     "license"               => "perl",
     "module_name"           => "Klib",
     "extra_compiler_flags"  => ['-fPIC'],
