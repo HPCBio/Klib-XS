@@ -1,4 +1,4 @@
-package Bio::Kseq;
+package Klib::Kseq;
 
 # VERSION
 
@@ -8,7 +8,7 @@ use warnings;
 # ABSTRACT: low-level XS-based FASTQ/FASTA parser
 
 use base qw(DynaLoader);
-bootstrap Bio::Kseq;
+bootstrap Klib::Kseq;
 
 1;
 

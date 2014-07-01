@@ -24,14 +24,14 @@
 
 KSEQ_INIT(gzFile, gzread)
 
-typedef gzFile          Bio__Kseq__Fh;
-typedef kseq_t*         Bio__Kseq__Iterator;
-typedef kstream_t*      Bio__Kseq__Kstream;
-typedef kstring_t*      Bio__Kseq__Kstring;
+typedef gzFile          Klib__Kseq__Fh;
+typedef kseq_t*         Klib__Kseq__Iterator;
+typedef kstream_t*      Klib__Kseq__Kstream;
+typedef kstring_t*      Klib__Kseq__Kstring;
 
-MODULE = Bio::Kseq PACKAGE = Bio::Kseq  PREFIX=kseq_
+MODULE = Klib::Kseq PACKAGE = Klib::Kseq  PREFIX=kseq_
 
-Bio::Kseq::Fh
+Klib::Kseq::Fh
 kseq_new(pack, filename, mode="r")
     char *pack
     char *filename
@@ -42,7 +42,7 @@ kseq_new(pack, filename, mode="r")
     OUTPUT:
         RETVAL
 
-Bio::Kseq::Fh
+Klib::Kseq::Fh
 kseq_newfh(pack, fh, mode="r")
     char *pack
     PerlIO* fh
@@ -53,11 +53,11 @@ kseq_newfh(pack, fh, mode="r")
     OUTPUT:
         RETVAL
 
-MODULE = Bio::Kseq PACKAGE = Bio::Kseq::Fh  PREFIX=file_
+MODULE = Klib::Kseq PACKAGE = Klib::Kseq::Fh  PREFIX=file_
 
-Bio::Kseq::Iterator
+Klib::Kseq::Iterator
 file_iterator(fp)
-    Bio::Kseq::Fh fp
+    Klib::Kseq::Fh fp
     PROTOTYPE: $
     CODE:
         RETVAL = kseq_init(fp);
@@ -66,16 +66,16 @@ file_iterator(fp)
 
 void
 file_DESTROY(fp)
-    Bio::Kseq::Fh fp
+    Klib::Kseq::Fh fp
     PROTOTYPE: $
     CODE:
         gzclose(fp);
 
-#MODULE = Bio::Kseq PACKAGE = Bio::Kseq::Kstring   PREFIX=kstr_
+#MODULE = Klib::Kseq PACKAGE = Klib::Kseq::Kstring   PREFIX=kstr_
 #
 #size_t
 #kstr_l(kstr)
-#    Bio::Kseq::Kstring kstr
+#    Klib::Kseq::Kstring kstr
 #    PROTOTYPE: $
 #    CODE:
 #        RETVAL = kstr->l;
@@ -84,7 +84,7 @@ file_DESTROY(fp)
 #
 #size_t
 #kstr_m(kstr)
-#    Bio::Kseq::Kstring kstr
+#    Klib::Kseq::Kstring kstr
 #    PROTOTYPE: $
 #    CODE:
 #        RETVAL = kstr->m;
@@ -93,19 +93,19 @@ file_DESTROY(fp)
 #
 #char*
 #kstr_s(kstr)
-#    Bio::Kseq::Kstring kstr
+#    Klib::Kseq::Kstring kstr
 #    PROTOTYPE: $
 #    CODE:
 #        RETVAL = kstr->s;
 #    OUTPUT:
 #        RETVAL
 
-MODULE = Bio::Kseq PACKAGE = Bio::Kseq::Kstream   PREFIX=kstream_
+MODULE = Klib::Kseq PACKAGE = Klib::Kseq::Kstream   PREFIX=kstream_
 
-Bio::Kseq::Kstream
+Klib::Kseq::Kstream
 kstream_new(package, fh)
     char *package
-    Bio::Kseq::Fh fh
+    Klib::Kseq::Fh fh
     PROTOTYPE: $$
     CODE:
         RETVAL = ks_init(fh);
@@ -114,7 +114,7 @@ kstream_new(package, fh)
 
 int
 kstream_begin(kstr)
-    Bio::Kseq::Kstream kstr
+    Klib::Kseq::Kstream kstr
     PROTOTYPE: $
     CODE:
         RETVAL = kstr->begin;
@@ -123,7 +123,7 @@ kstream_begin(kstr)
 
 int
 kstream_end(kstr)
-    Bio::Kseq::Kstream kstr
+    Klib::Kseq::Kstream kstr
     PROTOTYPE: $
     CODE:
         RETVAL = kstr->end;
@@ -132,7 +132,7 @@ kstream_end(kstr)
 
 int
 kstream_is_eof(kstr)
-    Bio::Kseq::Kstream kstr
+    Klib::Kseq::Kstream kstr
     PROTOTYPE: $
     CODE:
         RETVAL = kstr->is_eof;
@@ -141,16 +141,16 @@ kstream_is_eof(kstr)
 
 char *
 kstream_buffer(kstr)
-    Bio::Kseq::Kstream kstr
+    Klib::Kseq::Kstream kstr
     PROTOTYPE: $
     CODE:
         RETVAL = (char *)kstr->buf;
     OUTPUT:
         RETVAL
 
-Bio::Kseq::Fh
+Klib::Kseq::Fh
 kstream_fh(kstr)
-    Bio::Kseq::Kstream kstr
+    Klib::Kseq::Kstream kstr
     PROTOTYPE: $
     CODE:
         RETVAL = kstr->f;
@@ -159,16 +159,16 @@ kstream_fh(kstr)
 
 void
 kstream_DESTROY(kstr)
-    Bio::Kseq::Kstream kstr
+    Klib::Kseq::Kstream kstr
     PROTOTYPE: $
     CODE:
         ks_destroy(kstr);
 
-MODULE = Bio::Kseq PACKAGE = Bio::Kseq::Iterator   PREFIX=it_
+MODULE = Klib::Kseq PACKAGE = Klib::Kseq::Iterator   PREFIX=it_
 
 SV *
 it_next_seq(it)
-    Bio::Kseq::Iterator it
+    Klib::Kseq::Iterator it
     PROTOTYPE: $
     INIT:
         HV * results;
@@ -188,7 +188,7 @@ it_next_seq(it)
 
 int
 it_read(it)
-    Bio::Kseq::Iterator it
+    Klib::Kseq::Iterator it
     PROTOTYPE: $
     INIT:
     CODE:
@@ -198,7 +198,7 @@ it_read(it)
 
 void
 it_rewind(it)
-    Bio::Kseq::Iterator it
+    Klib::Kseq::Iterator it
     PROTOTYPE: $
     CODE:
         /* kseq_rewind() doesn't completely rewind the file,
@@ -207,9 +207,9 @@ it_rewind(it)
         /* use zlib to do so */
         gzrewind(it->f->f);
 
-Bio::Kseq::Kstream
+Klib::Kseq::Kstream
 it_kstream(it)
-    Bio::Kseq::Iterator it
+    Klib::Kseq::Iterator it
     PROTOTYPE: $
     CODE:
         RETVAL = it->f;
@@ -218,7 +218,7 @@ it_kstream(it)
 
 char *
 it_name(it)
-    Bio::Kseq::Iterator it
+    Klib::Kseq::Iterator it
     PROTOTYPE: $
     CODE:
         RETVAL = it->name.s;
@@ -227,7 +227,7 @@ it_name(it)
 
 char *
 it_comment(it)
-    Bio::Kseq::Iterator it
+    Klib::Kseq::Iterator it
     PROTOTYPE: $
     CODE:
         RETVAL = it->comment.s;
@@ -236,7 +236,7 @@ it_comment(it)
 
 char *
 it_seq(it)
-    Bio::Kseq::Iterator it
+    Klib::Kseq::Iterator it
     PROTOTYPE: $
     CODE:
         RETVAL = it->seq.s;
@@ -245,7 +245,7 @@ it_seq(it)
 
 char *
 it_qual(it)
-    Bio::Kseq::Iterator it
+    Klib::Kseq::Iterator it
     PROTOTYPE: $
     CODE:
         RETVAL = it->qual.s;
@@ -254,7 +254,7 @@ it_qual(it)
 
 int
 it_last_char(it)
-    Bio::Kseq::Iterator it
+    Klib::Kseq::Iterator it
     PROTOTYPE: $
     CODE:
         RETVAL = it->last_char;
@@ -263,7 +263,7 @@ it_last_char(it)
 
 void
 it_DESTROY(it)
-    Bio::Kseq::Iterator it
+    Klib::Kseq::Iterator it
     PROTOTYPE: $
     CODE:
         kseq_destroy(it);
