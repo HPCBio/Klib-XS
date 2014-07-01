@@ -15,10 +15,10 @@ my %module_build_args = (
     "dist_author"           => [
         "Chris Fields <cjfields\@bioperl.org>"
     ],
-    "dist_name"             => "Bio-Kseq",
+    "dist_name"             => "Klib",
     "dist_version"          => "0.01",
     "license"               => "perl",
-    "module_name"           => "Bio::Kseq",
+    "module_name"           => "Klib",
     "extra_compiler_flags"  => ['-fPIC'],
     "include_dirs"          => ['.', File::Spec->catdir(qw(src klib))],
     "extra_linker_flags"    => ["-lz"],

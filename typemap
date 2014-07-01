@@ -1,8 +1,8 @@
 TYPEMAP
-Bio::Kseq::Iterator	T_PTROBJ
-Bio::Kseq::Fh	    T_PTROBJ
-Bio::Kseq::Kstream	T_PTROBJ
-Bio::Kseq::Kstring	T_PTROBJ
+Klib::Kseq::Iterator	T_PTROBJ
+Klib::Kseq::Fh	    T_PTROBJ
+Klib::Kseq::Kstream	T_PTROBJ
+Klib::Kseq::Kstring	T_PTROBJ
 z_off_t			    T_UV
 const uint8_t *		T_PV
 const int8_t *		T_PV

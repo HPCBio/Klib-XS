@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use lib qw(.. ../blib/lib ../blib/arch);
 use Test::Most;
-use Bio::Kseq;
+use Klib::Kseq;
 use inc::TestHelper;
 use Data::Dumper;
 
@@ -188,7 +188,7 @@ my %example_files = (
 
 for my $example (sort keys %example_files) {
     my $file = test_input_file("$example.fastq");
-    my $kseq = Bio::Kseq->new($file);
+    my $kseq = Klib::Kseq->new($file);
     my $it = $kseq->iterator;
     my $ct = 0;
     my $sample_seq;
