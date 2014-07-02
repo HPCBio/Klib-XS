@@ -2,7 +2,7 @@
 
 A simple low-level (XS) Perl interface to various C files from klib:
 
-    https://github.com/attractivechaos/klib
+https://github.com/attractivechaos/klib
 
 # Implemented
 
