@@ -16,13 +16,15 @@
 #include "ppport.h"
 #include "ksw.h"
 
-typedef kswr_t*         Klib__Ksw__Report;
-typedef kswq_t**         Klib__Ksw__Query;
+typedef kswr_t*      Klib__Ksw__Report;
+//typedef kswq_t** Klib__Ksw__Query;
 
 MODULE = Klib::Ksw PACKAGE = Klib::Ksw  PREFIX=ksw_
 
-Klib::Ksw::Report
-ksw_align(qlen, query, tlen, target, m, mat, gapo, gape, xtra, qry=NULL)
+# kswr_t ksw_align(int qlen, uint8_t *query, int tlen, uint8_t *target, int m, const int8_t *mat, int gapo, int gape, int xtra, kswq_t **qry);
+
+Klib::Ksw::Report 
+ksw_align(qlen, query, tlen, target, m, mat, gapo, gape, xtra)
     int qlen
     uint8_t* query
     int tlen
@@ -32,9 +34,9 @@ ksw_align(qlen, query, tlen, target, m, mat, gapo, gape, xtra, qry=NULL)
     int gapo
     int gape
     int xtra
-    Klib::Ksw::Query qry
     CODE:
-        RETVAL = ksw_align(qlen, query, tlen, target, m, mat, gapo, gape, xtra, qry)
+        kswr_t rp = ksw_align(qlen, query, tlen, target, m, mat, gapo, gape, xtra, NULL);
+        RETVAL = &rp;
     OUTPUT:
         RETVAL
 
@@ -60,7 +62,7 @@ MODULE = Klib::Ksw PACKAGE = Klib::Ksw::Report  PREFIX=kswr_
 
 int kswr_get_score(rp)
     Klib::Ksw::Report rp
-    PROTOTYPE: 
+    PROTOTYPE:
     CODE:
         RETVAL = rp->score;
     OUTPUT:

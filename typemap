@@ -3,9 +3,9 @@ Klib::Kseq::Iterator	T_PTROBJ
 Klib::Kseq::Fh	    T_PTROBJ
 Klib::Kseq::Kstream	T_PTROBJ
 Klib::Kseq::Kstring	T_PTROBJ
-Klib::Ksw::Query	T_PTROBJ
 Klib::Ksw::Report	T_PTROBJ
-uint8_t*				T_UV
+kswq_t  			T_OPAQUEPTR
+uint8_t*				T_PV
 const int8_t 		T_UV
 z_off_t			    T_UV
 const uint8_t *		T_PV
